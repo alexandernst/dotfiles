@@ -94,6 +94,7 @@ alias bindump_x86='objdump -d -M intel-mnemonic,i386'
 alias bindump_x64='objdump -d -M intel-mnemonic,x86-64'
 
 #Debug
+alias debug_here='sudo sh -c "ulimit -c unlimited && sysctl kernel.core_pattern=core"'
 alias vgdb='valgrind --leak-check=full --db-attach=yes --db-command="cgdb -- -nw %f %p" --track-origins=yes'
 
 #Compile ASM
