@@ -1,4 +1,4 @@
-ditfiles
+dotfiles
 ========
 
-My dotfiles
+Those are most my dotfiles.
