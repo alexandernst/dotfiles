@@ -70,6 +70,11 @@ alias edit_pacman_mirrors='sudo nano /etc/pacman.d/mirrorlist'
 
 #Oh git...
 alias gia='git add'
+alias giap='git app -p'
+alias gibs='git bisect start'
+alias gibb='git bisect bad'
+alias gibg='git bisect good'
+alias gibr='git bisect reset'
 alias gid='git diff'
 alias gis='git status'
 alias gic='git commit -m'
