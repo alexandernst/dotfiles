@@ -40,6 +40,8 @@ shopt -s cmdhist
 shopt -s dirspell
 shopt -s histappend
 
+/usr/bin/archey3
+
 #Oops...
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
