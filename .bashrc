@@ -66,9 +66,13 @@ alias reload='source ~/.bashrc'
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 alias wpa='sudo wpa_supplicant -Dwext -B -i wlan0 -c/etc/wpa_supplicant.conf && sudo dhcpcd wlan0'
 alias sync_progress='watch grep -e Dirty: -e Writeback: /proc/meminfo'
+
+#Pacman
 alias update='sudo yaourt -Syua'
-alias update_pacman_mirrors='sudo reflector --sort rate --threads 20 --fastest 10 --latest 40 --save /etc/pacman.d/mirrorlist'
-alias edit_pacman_mirrors='sudo nano /etc/pacman.d/mirrorlist'
+alias pacman_clean_cache='sudo pacman -Scc'
+alias pacman_edit_mirrors='sudo nano /etc/pacman.d/mirrorlist'
+alias pacman_path_belongs_to_package='sudo pacman -Qo '
+alias pacman_update_mirrors='sudo reflector --sort rate --threads 20 --fastest 10 --latest 40 --save /etc/pacman.d/mirrorlist'
 
 #Oh git...
 alias gia='git add'
