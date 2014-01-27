@@ -71,7 +71,7 @@ alias sync_progress='watch grep -e Dirty: -e Writeback: /proc/meminfo'
 alias update='sudo yaourt -Syua'
 alias pacman_clean_cache='sudo pacman -Scc'
 alias pacman_edit_mirrors='sudo nano /etc/pacman.d/mirrorlist'
-alias pacman_path_belongs_to_package='sudo pacman -Qo '
+alias pacman_path_belongs_to_package='sudo pacman -Qo'
 alias pacman_update_mirrors='sudo reflector --sort rate --threads 20 --fastest 10 --latest 40 --save /etc/pacman.d/mirrorlist'
 
 #Oh git...
