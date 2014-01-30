@@ -76,7 +76,7 @@ alias pacman_update_mirrors='sudo reflector --sort rate --threads 20 --fastest 1
 
 #Oh git...
 alias gia='git add'
-alias giap='git app -p'
+alias giap='git add -p'
 alias gibs='git bisect start'
 alias gibb='git bisect bad'
 alias gibg='git bisect good'
