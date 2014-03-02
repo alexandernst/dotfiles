@@ -58,6 +58,7 @@ alias df='df -h'
 alias wget='wget -c'
 
 #Tools
+alias cpu_temp='watch -n 0.1 "sensors | grep temp1"'
 alias diff='colordiff --side-by-side --width=`tput cols` --ignore-trailing-space --ignore-blank-lines'
 alias dirsize='du -sh'
 alias ls='ls --color=auto --almost-all --escape --indicator-style=classify --human-readable --literal --full-time --time-style=long-iso -o -v'
@@ -65,8 +66,8 @@ alias ports='netstat -tulanp'
 alias reload='source ~/.bashrc'
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 alias wpa='sudo wpa_supplicant -Dwext -B -i wlan0 -c/etc/wpa_supplicant.conf && sudo dhcpcd wlan0'
+alias show_funcs='compgen -A function | grep -v ^_'
 alias sync_progress='watch -n 0.1 grep -e Dirty: -e Writeback: /proc/meminfo'
-alias cpu_temp='watch -n 0.1 "sensors | grep temp1"'
 
 #Pacman
 alias update='sudo yaourt -Syua'
