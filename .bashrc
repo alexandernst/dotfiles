@@ -66,6 +66,7 @@ alias reload='source ~/.bashrc'
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 alias wpa='sudo wpa_supplicant -Dwext -B -i wlan0 -c/etc/wpa_supplicant.conf && sudo dhcpcd wlan0'
 alias sync_progress='watch -n 0.1 grep -e Dirty: -e Writeback: /proc/meminfo'
+alias cpu_temp='watch -n 0.1 "sensors | grep temp1"'
 
 #Pacman
 alias update='sudo yaourt -Syua'
