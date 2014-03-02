@@ -66,6 +66,7 @@ alias ports='netstat -tulanp'
 alias reload='source ~/.bashrc'
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 alias wpa='sudo wpa_supplicant -Dwext -B -i wlan0 -c/etc/wpa_supplicant.conf && sudo dhcpcd wlan0'
+alias show_alias='compgen -A alias'
 alias show_funcs='compgen -A function | grep -v ^_'
 alias sync_progress='watch -n 0.1 grep -e Dirty: -e Writeback: /proc/meminfo'
 
