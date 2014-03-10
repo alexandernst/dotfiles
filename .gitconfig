@@ -8,6 +8,7 @@
 	compression = 9
 	editor = nano
 [color]
+	autocrlf = true
 	branch = auto
 	diff = auto
 	grep = auto
