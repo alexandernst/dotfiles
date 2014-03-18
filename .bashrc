@@ -51,6 +51,8 @@ alias rm='rm -I --preserve-root'
 #Typlexia and lazyness
 alias ..='cd ..'
 alias ake='make'
+alias cgrpe='cgrep'
+alias grpe='grep'
 alias maek='make'
 alias mkae='make'
 alias makeç='make'
