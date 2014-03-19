@@ -117,6 +117,14 @@ alias bindump_x64='objdump -d -M intel-mnemonic,x86-64'
 alias debug_here='sudo sh -c "ulimit -c unlimited && sysctl kernel.core_pattern=core"'
 alias vgdb='valgrind --leak-check=full --db-attach=yes --db-command="cgdb -- -nw %f %p" --track-origins=yes'
 
+#Strings
+alias uppercase='tr "[:lower:]" "[:upper:]"'
+alias lowercase='tr "[:upper:]" "[:lower:]"'
+file2utf8() {
+  enc=`file -bi "$1" | cut -d'=' -f 2`
+  iconv -f $enc -t UTF-8 -o "utf8-$1" "$1"
+}
+
 #Compile ASM
 asm86() { nasm -f elf32 "${1}" -O0 -o "${1}".o && ld -s -o "${1}".bin "${1}".o; }
 asm64() { nasm -f elf64 "${1}" -O0 -o "${1}".o && ld -s -o "${1}".bin "${1}".o; }
