@@ -81,22 +81,22 @@ alias pacman_path_belongs_to_package='sudo pacman -Qo'
 alias pacman_update_mirrors='sudo reflector --sort rate --threads 20 --fastest 10 --latest 40 --save /etc/pacman.d/mirrorlist'
 
 #Oh git...
-alias gia='git add'
-alias giap='git add -p'
-alias gibd='git log --left-right --graph --cherry-pick --oneline'
+alias gia='git add' #/path/to/file
+alias giap='git add -p' #/path/to/file
+alias gibd='git log --left-right --graph --cherry-pick --oneline' #master..featureXYZ
 alias gibis='git bisect start'
 alias gibib='git bisect bad'
 alias gibig='git bisect good'
 alias gibir='git bisect reset'
 alias gibs='git branch --list'
-alias gicp='git cherry-pick'
+alias gicp='git cherry-pick' #hash
 alias gid='git diff'
 alias gist='git status'
-alias gic='git commit -m'
-alias gica='git commit -am'
+alias gic='git commit -m' #message
+alias gica='git commit -am' #message
 alias gich='git checkout'
 alias gilg='git log --color --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset" --abbrev-commit'
-alias giri='git rebase -i'
+alias giri='git rebase -i' #hash
 alias gips='git push'
 alias gipsf='git push --force'
 alias gipl='git pull'
