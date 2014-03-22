@@ -158,6 +158,12 @@ convert_with_sameq() { ffmpeg -i "${1}" -q:a 0 -q:v 0 "${2}"; } #same quality
 #-ab 128kb
 #-ar 44100
 
+#Network
+#Create a reverse tunnel that binds localhosts's port ${1} to remote hosts's port ${2}
+function reverse_tunnel(){
+  ssh -N -R ${2}:localhost:${1} alexandernst@alexandernst.com
+}
+
 function test_colors(){
   eval $(echo "no:global default; rs:reset; di:directory; fi:normal file; ln:symbolic link; mh:multihardlink; pi:named pipe; so:socket; do:door; bd:block device; cd:character device; or:orphan symlink; su:set uid; sg:set gid; ca:capability; tw:sticky other writable; ow:other writable; st:sticky; ex:executable; mi:missing file;" | sed -e 's/:/="/g; s/\;/"\n/g')
   {
