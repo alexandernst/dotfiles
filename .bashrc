@@ -62,7 +62,7 @@ alias wget='wget -c'
 #Tools
 alias cgrep='grep --color=always'
 alias cpu_temp='watch -n 0.1 "sensors | grep temp1"'
-alias diff='colordiff --side-by-side --width=`tput cols` --ignore-trailing-space --ignore-blank-lines'
+alias diff='colordiff --side-by-side --width=`tput cols` --ignore-trailing-space --ignore-blank-lines --ignore-matching-lines=RE'
 alias dirsize='du -sh'
 alias ls='ls --color=auto --almost-all --escape --indicator-style=classify --human-readable --literal --full-time --time-style=long-iso -o -v'
 alias ports='netstat -tulanp'
