@@ -94,6 +94,7 @@ alias gid='git diff'
 alias gist='git status'
 alias gic='git commit -m' #message
 alias gica='git commit -am' #message
+gicd() { git diff ${1}^1..${1}; } #hash
 alias gich='git checkout'
 alias gilg='git log --color --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset" --abbrev-commit'
 alias giri='git rebase -i' #hash
