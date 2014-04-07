@@ -46,16 +46,42 @@ set autoread
 
 " Status line
 set laststatus=2
+autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
-set statusline=%y\                              "filetype
+hi SL_OK      ctermbg=green  ctermfg=white guibg=green  guifg=white
+hi SL_Error   ctermbg=red    ctermfg=white guibg=red    guifg=white
+hi SL_Warning ctermbg=yellow ctermfg=black guibg=yellow guifg=black
+
+set statusline=%#SL_OK#
+set statusline+=[%{strlen(&ft)?&ft:'none'}]     "filetype
+set statusline+=%*\ 
+
+set statusline+=%#SL_Warning#                   "warning for BOM
+set statusline+=%{((exists('+bomb')\ &&\ &bomb)?'[BOM]':'')}
+set statusline+=%*\ 
+
 set statusline+=%t\                             "tail of the filename
 set statusline+=[
 set statusline+=%{FileSize()},\                 " file size
 set statusline+=%{strlen(&fenc)?&fenc:'none'},\ "file encoding
-set statusline+=%{&ff}]                         "line ending
+set statusline+=%{&ff}]\                        "line ending
+
+set statusline+=%#SL_Warning#                   "warning for trailing whitespaces
+set statusline+=%{StatuslineTrailingSpaceWarning()}
+set statusline+=%*\ 
+
+set statusline+=%#SL_Error#
+set statusline+=%{StatuslineTabWarning()}       "warning for mixed-indenting or expandtab is wrong for the current file
+set statusline+=%*
+
 set statusline+=%m                              "modified flag
 set statusline+=%r                              "read only flag
 set statusline+=%=                              "left/right separator
 set statusline+=column\ %c\ \|\                 "cursor column
 set statusline+=line\ %l/%L\                    "cursor line/total lines
 set statusline+=\(%p\%%\)                       "percent through file
+
+" Show special chars
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
