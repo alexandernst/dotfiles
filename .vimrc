@@ -92,3 +92,7 @@ set listchars=tab:——,trail:⋅,nbsp:⋅
 " Syntastic options
 let g:syntastic_check_on_open = 1 " check buffers at load and save
 let g:syntastic_auto_loc_list = 1 " open and close error window if errors
+
+" Set leader to ',' and setup some shortcuts
+let mapleader=","
+
