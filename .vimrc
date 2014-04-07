@@ -6,6 +6,11 @@ filetype plugin indent on
 " Monokai skin - https://github.com/sickill/vim-monokai
 colorscheme monokai
 
+" More highlight groups
+hi SL_OK      ctermbg=green  ctermfg=white guibg=green  guifg=white
+hi SL_Error   ctermbg=red    ctermfg=white guibg=red    guifg=white
+hi SL_Warning ctermbg=yellow ctermfg=black guibg=yellow guifg=black
+
 " Save and restore sessions - https://github.com/xolox/vim-session and https://github.com/xolox/vim-misc
 let g:session_autoload = 'yes'
 let g:session_autosave = 'yes'
@@ -49,10 +54,6 @@ set laststatus=2
 autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
-hi SL_OK      ctermbg=green  ctermfg=white guibg=green  guifg=white
-hi SL_Error   ctermbg=red    ctermfg=white guibg=red    guifg=white
-hi SL_Warning ctermbg=yellow ctermfg=black guibg=yellow guifg=black
-
 set statusline=%#SL_OK#
 set statusline+=[%{strlen(&ft)?&ft:'none'}]     "filetype
 set statusline+=%*\ 
@@ -73,6 +74,10 @@ set statusline+=%#SL_Error#
 set statusline+=%{StatuslineTabWarning()}       "warning for mixed-indenting or expandtab is wrong for the current file
 set statusline+=%*
 
+set statusline+=%#SL_Error#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 set statusline+=%m                              "modified flag
 set statusline+=%r                              "read only flag
 set statusline+=%=                              "left/right separator
@@ -83,3 +88,7 @@ set statusline+=\(%p\%%\)                       "percent through file
 " Show special chars
 set list
 set listchars=tab:——,trail:⋅,nbsp:⋅
+
+" Syntastic options
+let g:syntastic_check_on_open = 1 " check buffers at load and save
+let g:syntastic_auto_loc_list = 1 " open and close error window if errors
