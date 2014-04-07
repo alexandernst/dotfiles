@@ -62,10 +62,10 @@ alias wget='wget -c'
 #Tools
 alias cgrep='grep --color=always'
 alias cpu_temp='watch -n 0.1 "sensors | grep temp1"'
-alias diff='colordiff --side-by-side --width=`tput cols` --ignore-trailing-space --ignore-blank-lines'
+alias diff='colordiff --side-by-side --width=`tput cols` --ignore-trailing-space --ignore-blank-lines --ignore-matching-lines=RE'
 alias dirsize='du -sh'
-alias last_updated='ls -lF -darth `find . -maxdepth 1`'
 alias ls='ls --color=auto --almost-all --escape --indicator-style=classify --human-readable --literal --full-time --time-style=long-iso -o -v'
+alias ports='netstat -tulanp'
 alias reload='source ~/.bashrc'
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 alias show_alias='compgen -A alias'
@@ -88,13 +88,16 @@ alias gibis='git bisect start'
 alias gibib='git bisect bad'
 alias gibig='git bisect good'
 alias gibir='git bisect reset'
-alias gibs='git branch --list'
-alias gicp='git cherry-pick' #hash
+alias gibl='git branch --list'
+alias gibrl='git branch -d'
+gibrr() { git push origin :${1}; } #branch
 alias gid='git diff'
 alias gist='git status'
 alias gic='git commit -m' #message
 alias gica='git commit -am' #message
+gicd() { git diff ${1}^1..${1}; } #hash
 alias gich='git checkout'
+alias gicp='git cherry-pick' #hash
 alias gilg='git log --color --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset" --abbrev-commit'
 alias giri='git rebase -i' #hash
 alias gips='git push'
@@ -160,8 +163,6 @@ convert_with_sameq() { ffmpeg -i "${1}" -q:a 0 -q:v 0 "${2}"; } #same quality
 
 #Network
 #Create a reverse tunnel that binds localhosts's port ${1} to remote hosts's port ${2}
-alias ports='netstat -tulanp'
-alias ssh='ssh -4 -C'
 function reverse_tunnel(){
   ssh -N -R ${2}:localhost:${1} alexandernst@alexandernst.com
 }
