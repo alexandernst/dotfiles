@@ -5,4 +5,5 @@ cp -f ~/.gitconfig .gitconfig
 cp -f ~/.toprc .toprc
 
 cp -f ~/.vimrc .vimrc
-cp -Rf ~/.vim .vim
+cp -f ~/.vimfs .vimfs
+cp -Rf ~/.vim .
