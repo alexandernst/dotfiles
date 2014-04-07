@@ -57,15 +57,13 @@ set statusline=%#SL_OK#
 set statusline+=[%{strlen(&ft)?&ft:'none'}]     "filetype
 set statusline+=%*\ 
 
-set statusline+=%#SL_Warning#                   "warning for BOM
-set statusline+=%{((exists('+bomb')\ &&\ &bomb)?'[BOM]':'')}
-set statusline+=%*\ 
-
 set statusline+=%t\                             "tail of the filename
 set statusline+=[
 set statusline+=%{FileSize()},\                 " file size
 set statusline+=%{strlen(&fenc)?&fenc:'none'},\ "file encoding
-set statusline+=%{&ff}]\                        "line ending
+set statusline+=%{&ff},\ 
+set statusline+=%{((exists('+bomb')\ &&\ &bomb)?'BOM':'no\ BOM')} "warning for BOM
+set statusline+=]\                              "line ending
 
 set statusline+=%#SL_Warning#                   "warning for trailing whitespaces
 set statusline+=%{StatuslineTrailingSpaceWarning()}
@@ -84,4 +82,4 @@ set statusline+=\(%p\%%\)                       "percent through file
 
 " Show special chars
 set list
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+set listchars=tab:——,trail:⋅,nbsp:⋅
