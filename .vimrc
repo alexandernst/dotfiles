@@ -6,6 +6,9 @@ filetype plugin indent on
 " Monokai skin - https://github.com/sickill/vim-monokai
 colorscheme monokai
 
+" Some monokai hacks
+hi SpecialKey ctermfg=59 ctermbg=237 cterm=NONE guifg=#49483e guibg=NONE gui=NONE " remove TAB character bg
+
 " More highlight groups
 hi SL_OK      ctermbg=green  ctermfg=white guibg=green  guifg=white
 hi SL_Error   ctermbg=red    ctermfg=white guibg=red    guifg=white
@@ -87,7 +90,7 @@ set statusline+=\(%p\%%\)                       "percent through file
 
 " Show special chars
 set list
-set listchars=tab:——,trail:⋅,nbsp:⋅
+set listchars=tab:▷\ ,trail:⋅,nbsp:⋅
 
 " Syntastic options
 let g:syntastic_check_on_open = 1 " check buffers at load and save
