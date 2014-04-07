@@ -43,3 +43,19 @@ set statusline=%M%h%y\ %t\ %F\ %p%%\ %l/%L\ %=[%{&ff},%{&ft}]\ [a=\%03.3b]\ [h=\
 
 " Autoreload files on content changes
 set autoread
+
+" Status line
+set laststatus=2
+
+set statusline=%y\                              "filetype
+set statusline+=%t\                             "tail of the filename
+set statusline+=[
+set statusline+=%{FileSize()},\                 " file size
+set statusline+=%{strlen(&fenc)?&fenc:'none'},\ "file encoding
+set statusline+=%{&ff}]                         "line ending
+set statusline+=%m                              "modified flag
+set statusline+=%r                              "read only flag
+set statusline+=%=                              "left/right separator
+set statusline+=column\ %c\ \|\                 "cursor column
+set statusline+=line\ %l/%L\                    "cursor line/total lines
+set statusline+=\(%p\%%\)                       "percent through file
