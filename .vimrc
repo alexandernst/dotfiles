@@ -99,3 +99,24 @@ let g:syntastic_auto_loc_list = 1 " open and close error window if errors
 " Set leader to ',' and setup some shortcuts
 let mapleader=","
 
+nnoremap <Leader>uw gUiw " uppercase word
+nnoremap <Leader>lw guiw " lowercase word
+
+nnoremap <Leader>ul gUU  " uppercase line
+nnoremap <Leader>ll guu  " lowercase line
+
+nnoremap <Leader>lm :call cursor(0, len(getline('.'))/2)<cr>     " go to the middle of the line
+
+nnoremap <Leader>st H     " go to the top of the screen
+nnoremap <Leader>sm M     " go to the middle of the screen
+nnoremap <Leader>sb L     " go to the bottom of the screen
+
+nnoremap <Leader>ft gg    " go to the top of the file
+"nnoremap <Leader>fm M     " go to the middle of the file
+nnoremap <Leader>fb G     " go to the bottom of the file
+
+" Stop beeping!
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+	autocmd GUIEnter * set visualbell t_vb=
+endif
