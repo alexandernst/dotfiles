@@ -120,3 +120,7 @@ set noerrorbells visualbell t_vb=
 if has('autocmd')
 	autocmd GUIEnter * set visualbell t_vb=
 endif
+
+" Useful shortcuts
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
