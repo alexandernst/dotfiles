@@ -111,16 +111,15 @@ nnoremap <Leader>st H     " go to the top of the screen
 nnoremap <Leader>sm M     " go to the middle of the screen
 nnoremap <Leader>sb L     " go to the bottom of the screen
 
-nnoremap <Leader>ft gg    " go to the top of the file
-"nnoremap <Leader>fm M     " go to the middle of the file
-nnoremap <Leader>fb G     " go to the bottom of the file
+nnoremap <Leader>ft gg\ 0 " go to the top of the file
+nnoremap <Leader>fm M\ 0    " go to the middle of the file
+nnoremap <Leader>fb G$  " go to the bottom of the file
+
+:nmap <c-s> :w<CR> " save file in normal mode
+:imap <c-s> <Esc>:w<CR>a " save file in insert mode
 
 " Stop beeping!
 set noerrorbells visualbell t_vb=
 if has('autocmd')
 	autocmd GUIEnter * set visualbell t_vb=
 endif
-
-" Useful shortcuts
-:nmap <c-s> :w<CR>
-:imap <c-s> <Esc>:w<CR>a
