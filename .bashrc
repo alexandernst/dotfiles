@@ -104,9 +104,9 @@ alias gips='git push'
 alias gipsf='git push --force'
 alias gipl='git pull'
 alias giplr='git pull --rebase'
+alias gish='git stash'
 alias gishl='git stash list'
 alias gishp='git stash pop'
-alias gishs='git stash save'
 
 #Compile ASM to shellcode
 alias asm2bin_x86='as -o /dev/null -32 -al -msyntax=intel -mnaked-reg'
