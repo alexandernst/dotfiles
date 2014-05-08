@@ -109,6 +109,7 @@ alias giplr='git pull --rebase'
 alias gish='git stash'
 alias gishl='git stash list'
 alias gishp='git stash pop'
+git_clone_with_key() { ssh-agent bash -c "ssh-add ${1}; git clone ${2}"; } #key_path git_url
 
 #Compile ASM to shellcode
 alias asm2bin_x86='as -o /dev/null -32 -al -msyntax=intel -mnaked-reg'
