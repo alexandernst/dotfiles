@@ -52,11 +52,12 @@ alias rm='rm -I --preserve-root'
 alias ..='cd ..'
 alias ake='make'
 alias cgrpe='cgrep'
+alias df='df -h'
 alias grpe='grep'
 alias maek='make'
 alias mkae='make'
 alias makeç='make'
-alias df='df -h'
+alias pushd='pushd .'
 alias wget='wget -c'
 
 #Tools
