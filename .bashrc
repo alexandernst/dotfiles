@@ -65,6 +65,7 @@ alias cpu_temp='watch -n 0.1 "sensors | grep temp1"'
 alias diff='colordiff --side-by-side --width=`tput cols` --ignore-trailing-space --ignore-blank-lines --ignore-matching-lines=RE'
 alias dirsize='du -sh'
 alias ls='ls --color=auto --almost-all --escape --indicator-style=classify --human-readable --literal --full-time --time-style=long-iso -o -v'
+alias perms="stat -c '%n %U:%G-%a'"
 alias ports='netstat -tulanp'
 alias reload='source ~/.bashrc'
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
