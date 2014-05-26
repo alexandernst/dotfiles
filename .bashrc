@@ -65,6 +65,7 @@ alias cgrep='grep --color=always'
 alias cpu_temp='watch -n 0.1 "sensors | grep temp1"'
 alias diff='colordiff --side-by-side --width=`tput cols` --ignore-trailing-space --ignore-blank-lines --ignore-matching-lines=RE'
 alias dirsize='du -sh'
+docs() { echo `cat ~/.bashrc | grep -E "^(alias |)${1}(=| )(.*?)$" | cut -d# -f 2`; } #command
 alias ls='ls --color=auto --almost-all --escape --indicator-style=classify --human-readable --literal --full-time --time-style=long-iso -o -v'
 alias perms="stat -c '%n %U:%G-%a'"
 alias ports='netstat -tulanp'
@@ -171,11 +172,11 @@ convert_with_sameq() { ffmpeg -i "${1}" -q:a 0 -q:v 0 "${2}"; } #same quality
 
 #Network
 #Create a reverse tunnel that binds localhosts's port ${1} to remote hosts's port ${2}
-function reverse_tunnel(){
+reverse_tunnel(){
   ssh -N -R ${2}:localhost:${1} alexandernst@alexandernst.com
 }
 
-function test_colors(){
+test_colors(){
   eval $(echo "no:global default; rs:reset; di:directory; fi:normal file; ln:symbolic link; mh:multihardlink; pi:named pipe; so:socket; do:door; bd:block device; cd:character device; or:orphan symlink; su:set uid; sg:set gid; ca:capability; tw:sticky other writable; ow:other writable; st:sticky; ex:executable; mi:missing file;" | sed -e 's/:/="/g; s/\;/"\n/g')
   {
     echo -e "LS_COLORS\n\n"
