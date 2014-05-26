@@ -58,6 +58,18 @@ alias maek='make'
 alias mkae='make'
 alias makeç='make'
 alias pushd='pushd .'
+swap() { # swap 2 filenames around
+  if [ $# -ne 2 ]; then
+    echo "swap: 2 arguments needed"; return 1
+  fi
+  if [ ! -e $1 ]; then
+    echo "swap: $1 does not exist"; return 1
+  fi
+  if [ ! -e $2 ]; then
+    echo "swap: $2 does not exist"; return 1
+  fi
+  local TMPFILE=tmp.$$ ; mv $1 $TMPFILE ; mv $2 $1 ; mv $TMPFILE $2
+}
 alias wget='wget -c'
 
 #Tools
