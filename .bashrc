@@ -128,6 +128,7 @@ git_clone_with_key() { ssh-agent bash -c "ssh-add ${1}; git clone ${2}"; } #key_
 git_pull_with_key() { ssh-agent bash -c "ssh-add ${1}; git pull"; } #key_path
 git_pull_rebase_with_key() { ssh-agent bash -c "ssh-add ${1}; git pull --rebase"; } #key_path
 git_push_with_key() { ssh-agent bash -c "ssh-add ${1}; git push"; } #key_path
+git_undo_last_commit() { git reset --soft HEAD^ ; }
 
 #Compile ASM to shellcode
 alias asm2bin_x86='as -o /dev/null -32 -al -msyntax=intel -mnaked-reg'
