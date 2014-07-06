@@ -75,6 +75,7 @@ alias wget='wget -c'
 #Tools
 alias cgrep='grep --color=always'
 alias cpu_temp='watch -n 0.1 "sensors | grep temp1"'
+dd_progress(){ sudo dd if="${1}" | pv | sudo dd of="${2}"; }
 alias diff='colordiff --side-by-side --width=`tput cols` --ignore-trailing-space --ignore-blank-lines --ignore-matching-lines=RE'
 alias dirsize='du -sh'
 docs() { echo `cat ~/.bashrc | grep -E "^(alias |)${1}(=| )(.*?)$" | cut -d# -f 2`; } #command
