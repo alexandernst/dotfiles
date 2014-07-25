@@ -116,7 +116,7 @@ alias gica='git commit -am' #message
 gicd() { git diff ${1}^1..${1}; } #hash
 alias gich='git checkout'
 alias gicp='git cherry-pick' #hash
-alias gilg='git log --color --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset" --abbrev-commit'
+alias gilg='git log --color --graph --pretty=format:"%Cred%H%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset"'
 alias giri='git rebase -i' #hash
 alias gips='git push'
 alias gipsf='git push --force'
