@@ -130,6 +130,10 @@ git_pull_with_key() { ssh-agent bash -c "ssh-add ${1}; git pull"; } #key_path
 git_pull_rebase_with_key() { ssh-agent bash -c "ssh-add ${1}; git pull --rebase"; } #key_path
 git_push_with_key() { ssh-agent bash -c "ssh-add ${1}; git push"; } #key_path
 git_push_force_with_key() { ssh-agent bash -c "ssh-add ${1}; git push -f"; } #key_path
+git_rewrite_parent() {
+  echo "${1} ${2}" > .git/info/grafts
+  git filter-branch --tag-name-filter cat -- --all
+} #hash_to_modify has_of_new_parent
 git_undo_last_commit() { git reset --soft HEAD^ ; }
 
 #Compile ASM to shellcode
