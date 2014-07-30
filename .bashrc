@@ -79,6 +79,7 @@ dd_progress(){ sudo dd if="${1}" | pv | sudo dd of="${2}"; }
 alias diff='colordiff --side-by-side --width=`tput cols` --ignore-trailing-space --ignore-blank-lines --ignore-matching-lines=RE'
 alias dirsize='du -sh'
 docs() { echo `cat ~/.bashrc | grep -E "^(alias |)${1}(=| )(.*?)$" | cut -d# -f 2`; } #command
+alias logs='find /var/log -type f -iregex '.*[^\.][^0-9]+$' -not -iregex '.*gz$' 2> /dev/null | xargs sudo tail -n0 -f | ccze -A'
 alias ls='ls --color=auto --almost-all --escape --indicator-style=classify --human-readable --literal --full-time --time-style=long-iso -o -v'
 alias perms="stat -c '%n %U:%G-%a'"
 alias ports='netstat -tulanp'
@@ -126,6 +127,9 @@ alias gish='git stash'
 alias gishl='git stash list'
 alias gishp='git stash pop'
 git_clone_with_key() { ssh-agent bash -c "ssh-add ${1}; git clone ${2}"; } #key_path git_url
+git_generate_patches() {
+  git format-patch -n${1} ${2}
+} #number_of_commits_to_include_from_hash hash
 git_pull_with_key() { ssh-agent bash -c "ssh-add ${1}; git pull"; } #key_path
 git_pull_rebase_with_key() { ssh-agent bash -c "ssh-add ${1}; git pull --rebase"; } #key_path
 git_push_with_key() { ssh-agent bash -c "ssh-add ${1}; git push"; } #key_path
