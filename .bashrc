@@ -78,6 +78,7 @@ alias cpu_temp='watch -n 0.1 "sensors | grep temp1"'
 dd_progress(){ sudo dd if="${1}" | pv | sudo dd of="${2}"; }
 alias diff='colordiff --side-by-side --width=`tput cols` --ignore-trailing-space --ignore-blank-lines --ignore-matching-lines=RE'
 alias dirsize='du -sh'
+alias disks='lsblk --output NAME,KNAME,FSTYPE,LABEL,SIZE,TYPE'
 docs() { echo `cat ~/.bashrc | grep -E "^(alias |)${1}(=| )(.*?)$" | cut -d# -f 2`; } #command
 alias logs='find /var/log -type f -iregex '.*[^\.][^0-9]+$' -not -iregex '.*gz$' 2> /dev/null | xargs sudo tail -n0 -f | ccze -A'
 alias ls='ls --color=auto --almost-all --escape --indicator-style=classify --human-readable --literal --full-time --time-style=long-iso -o -v'
