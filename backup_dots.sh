@@ -4,10 +4,6 @@ cp -f ~/.bashrc .bashrc
 cp -f ~/.gitconfig .gitconfig
 cp -f ~/.toprc .toprc
 
-cp -f ~/.vimrc .vimrc
-cp -f ~/.vimfs .vimfs
-cp -Rf ~/.vim .
-
 echo -n "Password: "
 read -s password
 password_enc=`echo -n ${password} | sha512sum | cut -d' ' -f1`
