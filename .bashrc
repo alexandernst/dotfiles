@@ -182,16 +182,11 @@ mkgz() { tar cvzf "${1}.tar.gz"  "${1}"; }
 mkbz2() { tar cvjf "${1}.tar.bz2" "${1}"; }
 
 #Multimedia
-list_tracks_ffmpeg() { ffmpeg -i "${1}" 2>&1 | grep -i stream; }
-list_tracks_mkvmerge() { mkvmerge -i "${1}" | grep -i track; }
-
-#extract_track_ffmpeg "Movie.avi" 0:1 "Sound.mp3"
-extract_track_ffmpeg() { ffmpeg -i "${1}" -map "${2}" -acodec copy -vcodec copy "${3}"; }
-
-#extract_track_mkvextract "Movie.mkv" 1 "Sound.mp3"
-extract_track_mkvextract() { mkvextract tracks "${1}" ${2}:"${3}"; }
-
-convert_with_sameq() { ffmpeg -i "${1}" -q:a 0 -q:v 0 "${2}"; } #same quality
+list_tracks_ffmpeg() { ffmpeg -i "${1}" 2>&1 | grep -i stream; } #File.ext
+list_tracks_mkvmerge() { mkvmerge -i "${1}" | grep -i track; } #File.ext
+extract_track_ffmpeg() { ffmpeg -i "${1}" -map "${2}" -acodec copy -vcodec copy "${3}"; } #File.ext 0:1 Track.ext
+extract_track_mkvextract() { mkvextract tracks "${1}" ${2}:"${3}"; } #File.ext 1 Track.ext
+convert_with_sameq() { ffmpeg -i "${1}" -q:a 0 -q:v 0 "${2}"; } #File.ext
 #More audio options:
 #-ab 128kb
 #-ar 44100
