@@ -80,6 +80,100 @@ alias diff='colordiff --side-by-side --width=`tput cols` --ignore-trailing-space
 alias dirsize='du -sh'
 alias disks='lsblk --output NAME,KNAME,FSTYPE,LABEL,SIZE,TYPE'
 docs() { echo `cat ~/.bashrc | grep -E "^(alias |)${1}(=| )(.*?)$" | cut -d# -f 2`; } #command
+file_to_utf8(){
+	reset="\033[0;00m"
+	success="\033[1;32m"
+	noconversion="\033[1;34m"
+	fileskipped="\033[1;37m"
+	fileconverterror="\033[1;31m"
+
+	fileerrors=""
+
+	if [ -f "$1" ] ; then
+		charset="$(file -bi "$1"|awk -F "=" '{print $2}')"
+		if [ "$charset" == "binary" ]; then
+			echo -e "$noconversion Not converting $1 because it looks like a binary file $reset"
+			fileerrors="$fileerrors\n$1"
+		elif [ "$charset" != "utf-8" ]; then
+			tmp=$(mktemp)
+			owner=`ls -l "$1" | awk '{ print $3 }'`
+			group=`ls -l "$1" | awk '{ print $4 }'`
+			octalpermission=$( stat --format=%a "$1" )
+			echo -e "$success $1\t$charset\t->\tUTF-8 $reset"
+			iconv -f "$charset" -t utf8 "$1" -o $tmp &> /dev/null
+			RETVAL=$?
+			if [ $RETVAL -ne 0 ] ; then
+				fileerrors="$fileerrors\n$1"
+			fi
+			mv "$tmp" "$1"
+			chown $owner:$group "$1" &> /dev/null
+			chmod $octalpermission "$1" &> /dev/null
+		else
+			echo -e "$noconversion $1\t$charset\t->\tNo conversion needed (file is already UTF-8) $reset"
+		fi
+	fi
+
+	echo -e "$success Done! $reset"
+	echo -e ""
+	if [ ! $fileerrors == "" ]; then
+		echo -e "The following files had errors (charset not recognized, binary file or read/write error):"
+		echo -e $fileconverterror$fileerrors$reset
+	fi
+	rm 0 &> /dev/null
+}
+folder_to_utf8(){
+	filestoconvert=(htm html php txt tpl asp css js)
+	reset="\033[0;00m"
+	success="\033[1;32m"
+	noconversion="\033[1;34m"
+	fileskipped="\033[1;37m"
+	fileconverterror="\033[1;31m"
+	
+	dir=$1
+	files=(`find $dir -type f`);
+	fileerrors=""
+
+	find "$dir" -type f |while read inputfile
+	do
+		if [ -f "$inputfile" ] ; then
+			charset="$(file -bi "$inputfile"|awk -F "=" '{print $2}')"
+			if [ "$charset" == "binary" ]; then
+				echo -e "$noconversion Not converting $1 because it looks like a binary file $reset"
+				fileerrors="$fileerrors\n$1"
+			elif [ "$charset" != "utf-8" ]; then
+				filename=$(basename "$inputfile")
+				extension="${filename##*.}"
+				if in_array $extension "${filestoconvert[@]}" ; then
+					tmp=$(mktemp)
+					owner=`ls -l "$inputfile" | awk '{ print $3 }'`
+					group=`ls -l "$inputfile" | awk '{ print $4 }'`
+					octalpermission=$( stat --format=%a "$inputfile" )
+					echo -e "$success $inputfile\t$charset\t->\tUTF-8 $reset"
+					iconv -f "$charset" -t utf8 "$inputfile" -o $tmp &> /dev/null
+					RETVAL=$?
+					if [ $RETVAL -ne 0 ] ; then
+						fileerrors="$fileerrors\n$inputfile"
+					fi
+					mv "$tmp" "$inputfile"
+					chown $owner:$group "$inputfile"
+					chmod $octalpermission "$inputfile"
+				else
+					echo -e "$fileskipped $inputfile\t$charset\t->\tSkipped (.$extension) $reset"
+				fi
+			else
+				echo -e "$noconversion $inputfile\t$charset\t->\tNo conversion needed (file is already UTF-8) $reset"
+			fi
+		fi
+	done
+
+	echo -e "$success Done! $reset"
+	echo -e ""
+	if [ ! $fileerrors == "" ]; then
+		echo -e "The following files had errors (charset not recognized, binary file or read/write error):"
+		echo -e $fileconverterror$fileerrors$reset
+	fi
+	rm 0 &> /dev/null
+}
 alias fuck='sudo $(history -p \!\!)'
 alias less='less -R'
 alias logs='find /var/log -type f -iregex '.*[^\.][^0-9]+$' -not -iregex '.*gz$' 2> /dev/null | xargs sudo tail -n0 -f | ccze -A'
@@ -206,9 +300,9 @@ test_colors(){
       echo -e "\e[${i#*=}m$( x=${i%=*}; [ "${!x}" ] && echo "${!x}" || echo "$x" )\e[m"
     done
   }
-  
+
   echo -e "\n\n"
-  
+
   eval $(echo "fn:file path/name; ln:line number; se:separator; sl:matched line; mt:matched chunk;" | sed -e 's/:/="/g; s/\;/"\n/g')
   {
     echo -e "GREP_COLORS\n\n"
@@ -216,7 +310,7 @@ test_colors(){
     for i in $GREP_COLORS ; do
       echo -e "\e[${i#*=}m$( x=${i%=*}; [ "${!x}" ] && echo "${!x}" || echo "$x" )\e[m"
     done
-  }  
+  }
 }
 
 #How much time did a command took to complete
@@ -230,3 +324,14 @@ complete -o dirnames -d cd
 if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
 fi
+
+#Helpers
+in_array(){
+    local needle=$1
+    local hay=$2
+    shift
+    for hay; do
+        [[ $hay == $needle ]] && return 0
+    done
+    return 1
+}
