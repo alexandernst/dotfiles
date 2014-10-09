@@ -32,7 +32,9 @@ export GREP_COLORS='fn=96:ln=93:se=31:mt=92:sl=37'
 export LS_COLORS='no=0:rs=0:di=1;92:fi=0:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=4;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=1;91:mi=0'
 
 export EDITOR=nano #Shut up, vim/emacs nazis! I don't fucking want to hear a single word!
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoredups:erasedups
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+
 
 shopt -s autocd
 shopt -s cdspell
