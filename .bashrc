@@ -229,6 +229,8 @@ git_clone_with_key() { ssh-agent bash -c "ssh-add ${1}; git clone ${2}"; } #key_
 git_generate_patches() {
   git format-patch -n${1} ${2}
 } #number_of_commits_to_include_from_hash hash
+alias git_ignore_local_changes='git update-index --assume-unchanged'
+alias git_unignore_local_changes='git update-index --no-assume-unchanged'
 git_pull_with_key() { ssh-agent bash -c "ssh-add ${1}; git pull"; } #key_path
 git_pull_rebase_with_key() { ssh-agent bash -c "ssh-add ${1}; git pull --rebase"; } #key_path
 git_push_with_key() { ssh-agent bash -c "ssh-add ${1}; git push"; } #key_path
