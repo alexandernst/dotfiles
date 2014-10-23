@@ -5,6 +5,8 @@ cp -f .gitconfig ~/.gitconfig
 cp -f .toprc ~/.toprc
 cp -f .nanorc ~/.nanorc
 cp -Rf .nano ~/.nano
+cp -f .emacs ~/.emacs
+cp -Rf .emacs.d ~/.emacs.d
 
 echo -n "Password: "
 read -s password
