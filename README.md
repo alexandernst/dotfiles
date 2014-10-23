@@ -1,4 +1,4 @@
 dotfiles
 ========
 
-Those are most my dotfiles.
+Those are most of my dotfiles.
