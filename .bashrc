@@ -33,10 +33,7 @@ export LS_COLORS='no=0:rs=0:di=1;92:fi=0:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;
 
 export EDITOR=nano #Shut up, vim/emacs nazis! I don't fucking want to hear a single word!
 export HISTTIMEFORMAT="%Y/%m/%d - %H:%M:%S - "
-export HISTCONTROL="ignoredups:erasedups"
-export HISTIGNORE="history"
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
-
+export HISTCONTROL=ignoredups:erasedups
 
 shopt -s autocd
 shopt -s cdspell
