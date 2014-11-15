@@ -41,7 +41,7 @@ shopt -s cmdhist
 shopt -s dirspell
 shopt -s histappend
 
-/usr/bin/archey3
+/usr/bin/archey3 -c white
 
 #Oops...
 alias chown='chown --preserve-root'
