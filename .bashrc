@@ -27,18 +27,19 @@ PS1='[\u@\h ${timer_show}s \W]\[$(echo -ne $DOLLAR_COLOR)\]$\[\033[m\] '
 #Value  0       1       2       3       4       5       6       7
 #Color  Black   Red     Green   Yellow  Blue    Magenta Cyan    White
 
-export GREP_COLORS='fn=96:ln=93:se=31:mt=92:sl=37'
+#export GREP_COLORS='fn=96:ln=93:se=31:mt=92:sl=37'
 export LS_COLORS='no=0:rs=0:di=1;92:fi=0:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=4;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=1;91:mi=0'
 
 export EDITOR=nano #Shut up, vim/emacs nazis! I don't fucking want to hear a single word!
-export HISTTIMEFORMAT="%Y/%m/%d - %H:%M:%S - "
-export HISTCONTROL=ignoredups:erasedups
+HISTTIMEFORMAT="%Y/%m/%d - %H:%M:%S - "
+HISTIGNORE="&:[ ]*:reload"
 
 shopt -s autocd
-shopt -s cdspell
 shopt -s cmdhist
-shopt -s dirspell
+shopt -s extglob
 shopt -s histappend
+
+PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 /usr/bin/archey3 -c white
 
