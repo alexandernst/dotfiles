@@ -296,6 +296,15 @@ reverse_tunnel(){
   ssh -N -R ${2}:localhost:${1} alexandernst@alexandernst.com
 }
 
+hr(){
+
+  printf "\e[1;32m"
+  for i in  {1..10}; do
+    printf "%$(tput cols)s\n"|tr " " "="
+  done
+  printf "\e[0m"
+}
+
 test_colors(){
   eval $(echo "no:global default; rs:reset; di:directory; fi:normal file; ln:symbolic link; mh:multihardlink; pi:named pipe; so:socket; do:door; bd:block device; cd:character device; or:orphan symlink; su:set uid; sg:set gid; ca:capability; tw:sticky other writable; ow:other writable; st:sticky; ex:executable; mi:missing file;" | sed -e 's/:/="/g; s/\;/"\n/g')
   {
