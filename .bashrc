@@ -177,6 +177,7 @@ folder_to_utf8(){
 	fi
 	rm 0 &> /dev/null
 }
+alias cal='cal -m'
 alias fuck='sudo $(history -p \!\!)'
 alias less='less -R'
 alias logs='find /var/log -type f -iregex '.*[^\.][^0-9]+$' -not -iregex '.*gz$' 2> /dev/null | xargs sudo tail -n0 -f | ccze -A'
