@@ -42,6 +42,11 @@ shopt -s histappend
 
 export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
+#Fuck you, Ruby... I'm sick of you
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
 /usr/bin/archey3 -c white
 
 #Oops...
