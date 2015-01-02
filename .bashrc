@@ -199,7 +199,7 @@ alias sync_progress='watch -n 0.1 grep -e Dirty: -e Writeback: /proc/meminfo'
 alias xclip='xclip -selection clipboard'
 
 #Pacman
-alias update='sudo yaourt -Syua'
+alias update='yaourt -Syua'
 alias pacman_clean_cache='sudo pacman -Scc'
 alias pacman_edit_mirrors='sudo nano /etc/pacman.d/mirrorlist'
 alias pacman_path_belongs_to_package='sudo pacman -Qo'
