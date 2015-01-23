@@ -222,8 +222,8 @@ alias gich='git checkout'
 alias gicp='git cherry-pick' #hash
 alias gilg='git log --color --graph --pretty=format:"%Cred%H%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset"'
 alias giri='git rebase -i' #hash
-alias gips='git push'
-alias gipsf='git push --force'
+alias gips='git push origin --tags'
+alias gipsf='git push origin --tags --force'
 alias gipl='git pull'
 alias giplr='git pull --rebase'
 alias gish='git stash'
