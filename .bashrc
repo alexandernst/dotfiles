@@ -230,7 +230,7 @@ alias gish='git stash'
 alias gishl='git stash list'
 alias gishp='git stash pop'
 git_clone_with_key() { ssh-agent bash -c "ssh-add ${1}; git clone ${2}"; } #key_path git_url
-git_delete_tag() { git tag -d ${1} && git push origin :refs/tags/${1} } #tag
+git_delete_tag() { git tag -d ${1} && git push origin :refs/tags/${1}; } #tag
 git_generate_patches() {
   git format-patch -n${1} ${2}
 } #number_of_commits_to_include_from_hash hash
