@@ -222,8 +222,8 @@ alias gich='git checkout'
 alias gicp='git cherry-pick' #hash
 alias gilg='git log --color --graph --pretty=format:"%Cred%H%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset"'
 alias giri='git rebase -i' #hash
-alias gips='git push origin --tags'
-alias gipsf='git push origin --tags --force'
+alias gips='git push'
+alias gipsf='git push --force'
 alias gipl='git pull'
 alias giplr='git pull --rebase'
 alias gish='git stash'
@@ -240,6 +240,7 @@ git_pull_with_key() { ssh-agent bash -c "ssh-add ${1}; git pull"; } #key_path
 git_pull_rebase_with_key() { ssh-agent bash -c "ssh-add ${1}; git pull --rebase"; } #key_path
 git_push_with_key() { ssh-agent bash -c "ssh-add ${1}; git push"; } #key_path
 git_push_force_with_key() { ssh-agent bash -c "ssh-add ${1}; git push -f"; } #key_path
+git_push_tags() { git push origin --tags; }
 git_rewrite_parent() {
   echo "${1} ${2}" > .git/info/grafts
   git filter-branch --tag-name-filter cat -- --all
