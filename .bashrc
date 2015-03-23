@@ -39,10 +39,13 @@ shopt -s cmdhist
 shopt -s extglob
 shopt -s histappend
 
+#PATHs
 #Fuck you, Ruby... I'm sick of you
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
+#Codeception
+PATH="$HOME/.composer/vendor/codeception/codeception:$PATH"
 
 /usr/bin/archey3 -c white
 
@@ -354,3 +357,6 @@ in_array(){
     done
     return 1
 }
+
+# added by travis gem
+[ -f /home/alexandernst/.travis/travis.sh ] && source /home/alexandernst/.travis/travis.sh
