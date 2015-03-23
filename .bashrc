@@ -82,7 +82,7 @@ alias wget='wget -c'
 #Tools
 alias grep='grep --color=auto --binary-files=without-match --exclude-dir=.svn --exclude-dir=.hg --exclude-dir=.bzr --exclude-dir=.git --exclude=*.pyc'
 alias cgrep='grep --color=always'
-alias cpu_temp='watch -n 0.1 "sensors | grep temp1"'
+alias cpu_temp='watch -n 1 "sensors | grep temp1"'
 dd_progress(){ sudo dd if="${1}" | pv | sudo dd of="${2}"; }
 alias diff='colordiff --width=`tput cols` --unified --ignore-trailing-space --ignore-blank-lines --ignore-matching-lines=RE --suppress-common-lines --recursive'
 alias dirsize='du -sh'
@@ -195,7 +195,7 @@ alias rsync_no_delete='rsync -rtvutlh --progress'
 alias rsync_delete='rsync -rtvutlh --delete --progress'
 alias show_alias='compgen -A alias'
 alias show_funcs='compgen -A function | grep -v ^_'
-alias sync_progress='watch -n 0.1 grep -e Dirty: -e Writeback: /proc/meminfo'
+alias sync_progress='watch -n 1 grep -e Dirty: -e Writeback: /proc/meminfo'
 alias xclip='xclip -selection clipboard'
 
 #Pacman
