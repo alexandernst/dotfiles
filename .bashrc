@@ -39,6 +39,9 @@ shopt -s cmdhist
 shopt -s extglob
 shopt -s histappend
 
+#SSH
+eval `ssh-agent` && ssh-add
+
 #PATHs
 #Fuck you, Ruby... I'm sick of you
 if which ruby >/dev/null && which gem >/dev/null; then
@@ -203,7 +206,7 @@ alias update='yaourt -Syua'
 alias pacman_clean_cache='sudo pacman -Scc'
 alias pacman_edit_mirrors='sudo nano /etc/pacman.d/mirrorlist'
 alias pacman_path_belongs_to_package='sudo pacman -Qo'
-alias pacman_update_mirrors='sudo reflector --sort rate --threads 20 --fastest 10 --latest 40 --save /etc/pacman.d/mirrorlist'
+alias pacman_update_mirrors='sudo reflector --sort rate --threads 20 --fastest 10 --latest 40 --connection-timeout 30 --save /etc/pacman.d/mirrorlist'
 
 #Oh git...
 alias gia='git add' #/path/to/file
