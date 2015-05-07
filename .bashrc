@@ -40,7 +40,7 @@ shopt -s extglob
 shopt -s histappend
 
 #SSH
-eval `ssh-agent` && ssh-add
+eval `ssh-agent &> /dev/null` && ssh-add &> /dev/null
 
 #PATHs
 #Fuck you, Ruby... I'm sick of you
@@ -49,8 +49,6 @@ if which ruby >/dev/null && which gem >/dev/null; then
 fi
 #Codeception
 PATH="$HOME/.composer/vendor/codeception/codeception:$PATH"
-
-/usr/bin/archey3 -c white
 
 #Oops...
 alias chown='chown --preserve-root'
