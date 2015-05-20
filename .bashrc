@@ -245,6 +245,7 @@ git_pull_rebase_with_key() { ssh-agent bash -c "ssh-add ${1}; git pull --rebase"
 git_push_with_key() { ssh-agent bash -c "ssh-add ${1}; git push"; } #key_path
 git_push_force_with_key() { ssh-agent bash -c "ssh-add ${1}; git push -f"; } #key_path
 git_push_tags() { git push origin --tags; }
+git_rename_tag() { git tag ${2} ${1} && git tag -d ${1} && git push origin :refs/tags/${1} && git push --tags; } #old_tag new_tag
 git_rewrite_parent() {
   echo "${1} ${2}" > .git/info/grafts
   git filter-branch --tag-name-filter cat -- --all
