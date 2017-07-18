@@ -153,8 +153,3 @@ git_rewrite_parent() {
   git filter-branch --tag-name-filter cat -- --all
 } #hash_to_modify has_of_new_parent
 git_undo_last_commit() { git reset --soft HEAD^ ; }
-
-#Bitnami
-AWS_SSH_OPT="-o StrictHostKeyChecking=no -o CheckHostIP=no "
-alias ssh_build="ssh ${AWS_SSH_OPT} -i  /Users/alexandernst/.ssh/build20160906 -l bitnami "
-alias ssh_test="ssh ${AWS_SSH_OPT} -i  /Users/alexandernst/.ssh/test20160906 -l bitnami "
