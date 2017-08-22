@@ -53,28 +53,15 @@ plugins=(common-aliases docker encode64 git git-extras git-flow share-history su
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="$PATH:/Users/alexandernst/Applications/arcanist/bin"
-export PATH="$PATH:/Users/alexandernst/Applications/google-cloud-sdk/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 # Show hidden files in autocomplete
 compinit
 _comp_options+=(globdots)
 
-# Tweak autocomplete for docker special use cases
-zstyle ':completion:*:*:docker:*' option-stacking yes
-zstyle ':completion:*:*:docker-*:*' option-stacking yes
-
 # Ignore Ctrl + D (exit)
 setopt ignoreeof
 
-#Docker
-export MACHINE_STORAGE_PATH=/Users/alexandernst/Docker-machines
-#eval $(docker-machine env default)
-eval $(dinghy env)
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -90,6 +77,14 @@ fi
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# PHP development
+#export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
+
+# Python development
+#export PATH="$(brew --prefix homebrew/core/python2)/bin:$PATH"
+export PATH="$(brew --prefix homebrew/core/python3)/bin:$PATH"
 
 # Go development
 export GOPATH="${HOME}/.go"
@@ -153,3 +148,5 @@ git_rewrite_parent() {
   git filter-branch --tag-name-filter cat -- --all
 } #hash_to_modify has_of_new_parent
 git_undo_last_commit() { git reset --soft HEAD^ ; }
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
