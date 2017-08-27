@@ -59,6 +59,10 @@ source $ZSH/oh-my-zsh.sh
 compinit
 _comp_options+=(globdots)
 
+# Allow option stacking for short options
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
 # Ignore Ctrl + D (exit)
 setopt ignoreeof
 
