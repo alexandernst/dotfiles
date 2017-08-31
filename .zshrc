@@ -55,6 +55,12 @@ plugins=(common-aliases docker encode64 git git-extras git-flow share-history su
 
 source $ZSH/oh-my-zsh.sh
 
+# Quick folder jumping (https://github.com/rupa/z)
+. ./.z.sh
+
+# Nano syntax highlighting
+test -d "${HOME}/.nano" || wget https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh -O- | sh
+
 # Show hidden files in autocomplete
 compinit
 _comp_options+=(globdots)
@@ -154,3 +160,5 @@ git_rewrite_parent() {
 git_undo_last_commit() { git reset --soft HEAD^ ; }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
