@@ -1,11 +1,9 @@
 #!/bin/bash
 
-cp -f .bashrc ~/.bashrc
 cp -f .zshrc ~/.zshrc
 cp -f .gitconfig ~/.gitconfig
 cp -f .toprc ~/.toprc
 cp -f .nanorc ~/.nanorc
-cp -Rf .nano ~/
 
 echo -n "Password: "
 read -s password
