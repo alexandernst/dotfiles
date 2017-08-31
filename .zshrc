@@ -56,6 +56,7 @@ plugins=(common-aliases docker encode64 git git-extras git-flow share-history su
 source $ZSH/oh-my-zsh.sh
 
 # Quick folder jumping (https://github.com/rupa/z)
+test -f "${HOME}/.z.sh" || (wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O "${HOME}/.z.sh" && chmod +x "${HOME}/.z.sh")
 . ./.z.sh
 
 # Nano syntax highlighting
