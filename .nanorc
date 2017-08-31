@@ -1,4 +1,4 @@
 set autoindent
-set mouse
+set linenumbers
 set nonewlines
 set smooth
